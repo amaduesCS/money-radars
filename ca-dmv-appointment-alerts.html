@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Are CA DMV Appointments So Hard to Get? Slot Release Patterns &amp; Monitoring That Works</title>
+<meta name="description" content="CA DMV appointment slots appear in unpredictable batches with no public schedule. How read-only slot monitoring with Telegram alerts catches openings first — pricing, rules, and tooling compared.">
+<link rel="canonical" href="https://amaduescs.github.io/money-radars/ca-dmv-appointment-alerts.html">
+<style>
+body{font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#1c2733;max-width:760px;margin:0 auto;padding:24px 20px 64px}
+h1{font-size:1.7em;line-height:1.25;margin:.2em 0 .4em}
+h2{font-size:1.2em;margin-top:1.8em}
+header nav{font-size:.9em;color:#5a6b7b;margin-bottom:18px}
+header nav a{color:#0b5fa5;text-decoration:none;margin-right:12px}
+.byline{font-size:.85em;color:#7a8894;margin:0 0 6px}.answer{background:#f2f7fb;border-left:4px solid #0b5fa5;padding:14px 16px;margin:14px 0 8px}
+table{border-collapse:collapse;width:100%;font-size:.92em;margin:12px 0}
+th,td{border:1px solid #d4dde5;padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#eef3f7}
+footer{margin-top:44px;border-top:1px solid #d4dde5;padding-top:12px;font-size:.88em;color:#5a6b7b}
+.related li{margin:.35em 0}
+.faq dt{font-weight:600;margin-top:14px}
+.faq dd{margin:.2em 0 0 0}
+.cta{background:#0b5fa5;color:#fff;padding:16px 18px;margin:26px 0 8px}
+.cta a{color:#ffe28a}
+code{background:#eef3f7;padding:1px 5px;border-radius:3px;font-size:.9em}
+</style>
+</head>
+<body>
+<nav><a href="./index.html">Money Radars</a> · <a href="./ca-dmv-appointment-alerts.html">DMV slot alerts</a> · <a href="./bankruptcy-chapter11-claims-deadline.html">Chapter 11 claim deadlines</a> · <a href="./restaurant-license-renewal-penalties.html">License renewal penalties</a></nav>
+<h1>Why Are CA DMV Appointments So Hard to Get — and When Do New Slots Open?</h1>
+
+<p class="answer">California DMV appointment slots appear in irregular batches with no published schedule — the portal is the only source of truth. Page-change watchers can't tell a real opening from a layout edit; a read-only checker polling at ≤1 request/second that pushes new slots to Telegram is the dependable setup. Comparable services run $15–39/month.</p>
+<p class="byline">Research desk, updated 2026-10</p>
+
+<h2>Every way to catch a CA DMV opening, compared</h2>
+<table>
+<tr><th>Method</th><th>What it actually does</th><th>Where it falls short</th><th>Source</th></tr>
+<tr><td>Refreshing the DMV portal by hand</td><td>You see openings only while you are looking</td><td>No notification at all; you find out after the good slots are gone</td><td>—</td></tr>
+<tr><td>UptimeRobot-style page watchers</td><td>Alerts on any page change</td><td>Explicitly “page-change notification”, no slot-level parsing — false alarms and missed openings</td><td><a href="https://uptimerobot.com/free-tools/appointment-availability-monitoring/">uptimerobot.com</a></td></tr>
+<tr><td>Self-hosted GitHub bots</td><td>e.g. the ca-dmv-appointment-bot script</td><td>Single-maintainer hobby projects — you own uptime, proxy and maintenance forever</td><td><a href="https://github.com/jappareti/ca-dmv-appointment-bot">github.com/jappareti</a></td></tr>
+<tr><td>Managed slot alerts (this service)</td><td>Read-only poll of public pages at ≤1 req/s → instant Telegram push with a direct booking link</td><td>Paid: $15–39/mo typical for the category</td><td>Research desk scan, 2026-10</td></tr>
+</table>
+
+<h2>Is this allowed? The compliance rules</h2>
+<p>The defensible pattern is read-only: watch public pages at a polite ≤1 request/second rate, never auto-book, and always complete the booking yourself through your own account on the official portal. That stays clear of the platform terms-of-service issues that trip up bulk-booker bots, and it is exactly the behavior the FTC's BOTS Act guidance describes for ticketing-style compliance (<a href="https://www.ftc.gov/business-guidance/blog/2025/04/bots-act-compliance-time-refresher">FTC BOTS Act refresher</a>; <a href="https://www.govinfo.gov/link/plaw/114/public/274">statute text</a>).</p>
+
+<h2>FAQ</h2>
+<dl class="faq">
+<dt>When does the CA DMV release new appointment slots?</dt>
+<dd>There is no published release schedule; capacity frees up in irregular batches as appointments are rescheduled and cancelled. That unpredictability is precisely why continuous monitoring — not periodic manual checking — is the only reliable coverage.</dd>
+<dt>Why isn't a page-change monitor like UptimeRobot enough?</dt>
+<dd>Because it notifies on any page difference, not on slot availability. A banner edit triggers the alert; a genuinely open Tuesday slot may render identically. You need slot-level parsing between the page and the notification.</dd>
+<dt>Is automated slot monitoring against DMV rules?</dt>
+<dd>Read-only monitoring of public pages at ≤1 req/s with self-service booking is the compliant pattern; aggressive auto-booking bots are what create ToS and BOTS Act issues.</dd>
+<dt>What does a slot-alert service cost?</dt>
+<dd>The 2026 market scan puts similar visa/DMV slot-alert subscriptions at $15–39/month, with one-off arrangements at $50–200.</dd>
+<dt>What happens when an alert fires?</dt>
+<dd>You get a Telegram push with the location, date and a link — then you book it yourself through the official DMV portal with your own account. No passwords are shared.</dd>
+</dl>
+
+<div class="cta"><strong>Get CA DMV slot alerts on Telegram.</strong> Read-only monitoring, instant push, you book with your own account. Join the waitlist: <a href="mailto:alerts@moneyradars.example">alerts@moneyradars.example</a> (placeholder inbox — launch 2026-10).</div>
+
+<h2>Related radars</h2>
+<ul class="related">
+<li><a href="./bankruptcy-chapter11-claims-deadline.html">How do suppliers find out a customer filed Chapter 11 — before the claims bar date?</a></li>
+<li><a href="./restaurant-license-renewal-penalties.html">What happens if you miss a restaurant license renewal? State penalty rules, with real cases</a></li>
+<li><a href="./index.html">All Money Radars</a></li>
+</ul>
+
+<footer>Research desk, updated 2026-10. Facts sourced from a 2026-10 gray-market automation scan (FTC, GitHub, vendor pages).</footer>
+</body>
+</html>
